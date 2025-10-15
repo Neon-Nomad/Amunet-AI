@@ -10,7 +10,7 @@ export default function AboutPage() {
             backgroundImage: 'url(https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=1920)',
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 via-gray-900/70 to-cyan-900/60"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-900/50 via-gray-900/40 to-cyan-900/40"></div>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
@@ -46,7 +46,7 @@ export default function AboutPage() {
                 backgroundImage: 'url(https://images.pexels.com/photos/159299/graphic-design-studio-tracfone-programming-html-159299.jpeg?auto=compress&cs=tinysrgb&w=1920)',
               }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/95 via-teal-900/95 to-blue-900/95"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/70 via-teal-900/70 to-blue-900/70"></div>
             </div>
             <div className="relative z-10 p-8 md:p-12 text-white">
               <div className="text-center mb-8">
