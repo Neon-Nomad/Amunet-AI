@@ -30,14 +30,14 @@ export default function ChatBot() {
     <>
       {isOpen && (
         <div className="fixed bottom-24 right-6 w-96 h-[500px] bg-white rounded-lg shadow-2xl flex flex-col z-50 border border-gray-200">
-          <div className="bg-gradient-to-r from-neon-purple-600 to-purple-600 text-white p-4 rounded-t-lg flex items-center justify-between">
+          <div className="bg-gradient-to-r from-cyan-600 to-teal-600 text-white p-4 rounded-t-lg flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
                 <span className="font-bold">A</span>
               </div>
               <div>
                 <h3 className="font-semibold">Amunet AI</h3>
-                <p className="text-xs text-purple-200">AI Assistant</p>
+                <p className="text-xs text-white/80">AI Assistant</p>
               </div>
             </div>
             <button
@@ -57,7 +57,7 @@ export default function ChatBot() {
                 <div
                   className={`max-w-[80%] rounded-lg p-3 ${
                     msg.isUser
-                      ? 'bg-neon-purple-600 text-white'
+                      ? 'bg-cyan-600 text-white'
                       : 'bg-gray-100 text-gray-900'
                   }`}
                 >
@@ -75,11 +75,11 @@ export default function ChatBot() {
                 onChange={(e) => setMessage(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSend()}
                 placeholder="Type your message..."
-                className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500"
               />
               <button
                 onClick={handleSend}
-                className="bg-neon-purple-600 text-white p-2 rounded-lg hover:bg-blue-700 transition-colors"
+                className="bg-cyan-600 text-white p-2 rounded-lg hover:bg-teal-700 transition-colors"
               >
                 <Send size={20} />
               </button>
@@ -90,10 +90,29 @@ export default function ChatBot() {
 
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 w-14 h-14 bg-gradient-to-r from-neon-purple-600 to-purple-600 text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all flex items-center justify-center z-50"
+        className="fixed bottom-6 right-6 w-14 h-14 bg-gradient-to-r from-cyan-600 to-teal-600 text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all flex items-center justify-center z-50 chat-pulse"
       >
         <MessageCircle size={24} />
       </button>
+
+      <style>{`
+        @keyframes chatPulse {
+          0%, 100% {
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.4),
+                        0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+          }
+          50% {
+            box-shadow: 0 0 25px rgba(6, 182, 212, 0.9),
+                        0 10px 15px -3px rgba(0, 0, 0, 0.1),
+                        0 4px 6px -2px rgba(0, 0, 0, 0.05);
+          }
+        }
+
+        .chat-pulse {
+          animation: chatPulse 2s ease-in-out infinite;
+        }
+      `}</style>
     </>
   );
 }

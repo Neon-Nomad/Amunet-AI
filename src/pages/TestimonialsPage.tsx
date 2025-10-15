@@ -112,18 +112,70 @@ export default function TestimonialsPage() {
           ))}
         </div>
 
-        <div className="mt-16 bg-gradient-to-r from-neon-purple-600 to-purple-600 rounded-2xl p-12 text-center text-white">
-          <h2 className="text-3xl font-bold mb-4">
-            Join 500+ Happy Business Owners
-          </h2>
-          <p className="text-xl mb-8 text-purple-200">
-            Start capturing every opportunity today
-          </p>
-          <button className="bg-white text-neon-purple-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-            Try Amunet AI Free
-          </button>
+        <div className="mt-16 bg-gradient-to-r from-cyan-600 via-teal-600 to-blue-600 rounded-2xl p-12 text-center text-white relative overflow-hidden cta-banner">
+          <div className="absolute inset-0 opacity-20">
+            <div className="light-streak"></div>
+            <div className="light-streak" style={{animationDelay: '2s'}}></div>
+          </div>
+          <div className="relative z-10">
+            <h2 className="text-3xl font-bold mb-4">
+              Ready to stop missing opportunities?
+            </h2>
+            <p className="text-xl mb-6 text-white font-medium">
+              Amunet AI never sleeps — and neither should your business growth.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
+              <button className="bg-white text-cyan-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all transform hover:scale-105 pulse-button">
+                Start Free Trial
+              </button>
+              <button className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-cyan-600 transition-all transform hover:scale-105">
+                Book a Demo
+              </button>
+            </div>
+            <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm text-white font-medium">
+              <a href="/about" className="hover:underline">Meet Amunet</a>
+              <span>•</span>
+              <a href="/roi-calculator" className="hover:underline">See ROI in Action</a>
+              <span>•</span>
+              <a href="/demo" className="hover:underline">Try the Demo</a>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-12 text-center font-mono text-sm text-gray-500">
+          // End of Transmission — Amunet Systems standing by.
         </div>
       </div>
+
+      <style>{`
+        @keyframes lightStreak {
+          0% { transform: translateX(-100%) skewX(-20deg); }
+          100% { transform: translateX(200%) skewX(-20deg); }
+        }
+
+        .light-streak {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+          animation: lightStreak 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+          0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.7); }
+          50% { box-shadow: 0 0 20px 10px rgba(255,255,255,0); }
+        }
+
+        .pulse-button {
+          animation: pulse 2s infinite;
+        }
+
+        .cta-banner {
+          box-shadow: 0 0 40px rgba(6, 182, 212, 0.3);
+        }
+      `}</style>
     </div>
   );
 }
