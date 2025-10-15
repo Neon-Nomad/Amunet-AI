@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .shooting-stars-bg {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shooting-stars-bg::before,
+  .shooting-stars-bg::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, #a855f7, transparent);
+    animation: shootingStar 8s linear infinite;
+    opacity: 0.6;
+  }
+
+  .shooting-stars-bg::before {
+    top: -100px;
+    left: 20%;
+    animation-delay: 0s;
+  }
+
+  .shooting-stars-bg::after {
+    top: -100px;
+    left: 70%;
+    animation-delay: 4s;
+  }
+
+  @keyframes shootingStar {
+    0% {
+      transform: translateY(0) translateX(0) rotate(45deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.6;
+    }
+    90% {
+      opacity: 0.6;
+    }
+    100% {
+      transform: translateY(100vh) translateX(100px) rotate(45deg);
+      opacity: 0;
+    }
+  }
+}
+
+.star-line {
+  position: absolute;
+  width: 2px;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, #a855f7, transparent);
+  opacity: 0;
+  animation: shootingStar 8s linear infinite;
+}
+
+.star-line:nth-child(1) {
+  top: 10%;
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.star-line:nth-child(2) {
+  top: 30%;
+  left: 60%;
+  animation-delay: 3s;
+}
+
+.star-line:nth-child(3) {
+  top: 50%;
+  left: 85%;
+  animation-delay: 6s;
+}
+
+.star-line:nth-child(4) {
+  top: 70%;
+  left: 25%;
+  animation-delay: 2s;
+}
+
+.star-line:nth-child(5) {
+  top: 20%;
+  left: 80%;
+  animation-delay: 5s;
+}
