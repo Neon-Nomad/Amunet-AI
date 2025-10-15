@@ -39,15 +39,25 @@ export default function AboutPage() {
 
       <section className="py-20 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-br from-cyan-600 to-teal-600 rounded-2xl shadow-2xl p-8 md:p-12 text-white">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Meet Amunet AI
-              </h2>
+          <div className="rounded-2xl shadow-2xl overflow-hidden relative">
+            <div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{
+                backgroundImage: 'url(https://images.pexels.com/photos/159299/graphic-design-studio-tracfone-programming-html-159299.jpeg?auto=compress&cs=tinysrgb&w=1920)',
+              }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/95 via-teal-900/95 to-blue-900/95"></div>
             </div>
-            <blockquote className="text-lg md:text-xl leading-relaxed text-center text-white font-medium">
-              "Hi, I'm Amunet AI. I don't take coffee breaks, I don't call in sick, and I don't ghost your customers. My job? To make your business run like clockwork — even when you're sleeping. I was built to be the assistant you wish you'd hired years ago."
-            </blockquote>
+            <div className="relative z-10 p-8 md:p-12 text-white">
+              <div className="text-center mb-8">
+                <h2 className="text-3xl md:text-4xl font-bold mb-6 drop-shadow-lg">
+                  Meet Amunet AI
+                </h2>
+              </div>
+              <blockquote className="text-lg md:text-xl leading-relaxed text-center text-white font-medium drop-shadow-lg">
+                "Hi, I'm Amunet AI. I don't take coffee breaks, I don't call in sick, and I don't ghost your customers. My job? To make your business run like clockwork — even when you're sleeping. I was built to be the assistant you wish you'd hired years ago."
+              </blockquote>
+            </div>
           </div>
         </div>
       </section>
