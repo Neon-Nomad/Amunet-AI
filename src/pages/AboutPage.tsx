@@ -85,11 +85,15 @@ export default function AboutPage() {
               <p className="text-gray-600 leading-relaxed">
                 He's built websites, automations, and AI systems that help businesses actually work less and earn more. When he's not coding, he's probably tinkering with something he swore he was "just going to fix real quick" three hours ago.
               </p>
-              <div className="bg-gradient-to-br from-purple-50 to-purple-50 rounded-xl p-6 border-l-4 border-neon-purple-600">
-                <p className="text-lg font-medium text-gray-900 mb-2">Andrew's philosophy is simple:</p>
-                <p className="text-gray-700 italic">
-                  "Technology should make your life easier, not more complicated. If it doesn't save time or make money — it's just showing off."
-                </p>
+              <div className="relative bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-8 md:p-10 border-l-4 border-cyan-600">
+                <div className="absolute top-4 left-4 text-cyan-600/20 text-8xl font-serif leading-none">"</div>
+                <div className="absolute bottom-4 right-4 text-cyan-600/20 text-8xl font-serif leading-none">"</div>
+                <div className="relative z-10">
+                  <p className="text-xl font-semibold text-gray-900 mb-4">Andrew's philosophy is simple:</p>
+                  <p className="text-xl md:text-2xl text-gray-800 italic font-medium leading-relaxed">
+                    Technology should make your life easier, not more complicated. If it doesn't save time or make money — it's just showing off.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
