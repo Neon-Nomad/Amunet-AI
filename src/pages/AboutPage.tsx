@@ -3,13 +3,21 @@ import { Shield, Zap, TrendingUp } from 'lucide-react';
 export default function AboutPage() {
   return (
     <div className="bg-white">
-      <section className="py-20 bg-gradient-to-br from-purple-50 via-purple-50 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+      <section className="py-32 relative overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: 'url(https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=1920)',
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 via-gray-900/70 to-cyan-900/60"></div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-8 drop-shadow-lg">
               Our Mission
             </h1>
-            <p className="text-2xl text-gray-700 max-w-3xl mx-auto leading-relaxed font-medium">
+            <p className="text-2xl md:text-3xl text-white max-w-3xl mx-auto leading-relaxed font-medium drop-shadow-lg">
               "To give small business owners their time — and sanity — back."
             </p>
           </div>
