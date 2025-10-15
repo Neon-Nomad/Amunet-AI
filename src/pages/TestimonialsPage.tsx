@@ -75,7 +75,7 @@ export default function TestimonialsPage() {
             Small Businesses Love Amunet AI
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Real stories from real business owners who transformed their customer service
+            When small businesses stop missing calls, big things happen. Here's what real owners say after switching to Amunet AI.
           </p>
         </div>
 
@@ -83,7 +83,7 @@ export default function TestimonialsPage() {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-white border-2 border-gray-100 rounded-xl p-8 hover:shadow-lg transition-shadow relative"
+              className="bg-white border-2 border-gray-100 rounded-xl p-8 hover:border-gray-200 transition-colors relative"
             >
               <Quote className="absolute top-4 right-4 text-purple-200" size={48} />
 
