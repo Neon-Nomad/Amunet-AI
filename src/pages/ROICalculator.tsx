@@ -157,10 +157,10 @@ export default function ROICalculator() {
             </div>
           </div>
 
-          <div className="mt-8 bg-gradient-to-r from-neon-purple-600 to-purple-600 text-white p-6 rounded-xl">
+          <div className="mt-8 bg-gradient-to-r from-cyan-600 to-teal-600 text-white p-6 rounded-xl">
             <h3 className="text-xl font-bold mb-2">Your Amunet AI Investment</h3>
             <p className="text-3xl font-bold mb-1">${amunetCostPerYear.toLocaleString()}/year</p>
-            <p className="text-purple-200">
+            <p className="text-white font-medium">
               That's just ${(amunetCostPerYear / 12).toFixed(0)}/month to capture every opportunity
             </p>
           </div>
