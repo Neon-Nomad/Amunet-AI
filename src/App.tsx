@@ -69,12 +69,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-white relative shooting-stars-bg">
-      <div className="star-line"></div>
-      <div className="star-line"></div>
-      <div className="star-line"></div>
-      <div className="star-line"></div>
-      <div className="star-line"></div>
+    <div className="min-h-screen bg-white relative">
       <Navigation currentPage={currentPage} onNavigate={setCurrentPage} />
       <main>
         {renderPage()}
