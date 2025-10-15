@@ -95,46 +95,46 @@ export default function DemoPage() {
           <div className="relative">
             <div className="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-8">
               <div className="flex flex-col items-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-neon-purple-600 to-purple-600 rounded-full flex items-center justify-center mb-4 shadow-lg">
-                  <Phone className="text-white" size={32} />
+                <div className="w-24 h-24 bg-gradient-to-br from-cyan-600 to-teal-600 rounded-full flex items-center justify-center mb-4 shadow-xl">
+                  <Phone className="text-white" size={40} strokeWidth={2.5} />
                 </div>
-                <p className="font-semibold text-gray-900">Calls</p>
+                <p className="font-semibold text-gray-900 text-lg">Calls</p>
               </div>
 
               <ArrowRight className="text-gray-400 rotate-90 md:rotate-0" size={32} />
 
               <div className="flex flex-col items-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-neon-purple-600 to-purple-600 rounded-full flex items-center justify-center mb-4 shadow-lg">
-                  <Database className="text-white" size={32} />
+                <div className="w-24 h-24 bg-gradient-to-br from-cyan-600 to-teal-600 rounded-full flex items-center justify-center mb-4 shadow-xl">
+                  <Database className="text-white" size={40} strokeWidth={2.5} />
                 </div>
-                <p className="font-semibold text-gray-900">CRM</p>
+                <p className="font-semibold text-gray-900 text-lg">CRM</p>
               </div>
 
               <ArrowRight className="text-gray-400 rotate-90 md:rotate-0" size={32} />
 
               <div className="flex flex-col items-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-neon-purple-600 to-purple-600 rounded-full flex items-center justify-center mb-4 shadow-lg">
-                  <Calendar className="text-white" size={32} />
+                <div className="w-24 h-24 bg-gradient-to-br from-cyan-600 to-teal-600 rounded-full flex items-center justify-center mb-4 shadow-xl">
+                  <Calendar className="text-white" size={40} strokeWidth={2.5} />
                 </div>
-                <p className="font-semibold text-gray-900">Calendar</p>
+                <p className="font-semibold text-gray-900 text-lg">Calendar</p>
               </div>
 
               <ArrowRight className="text-gray-400 rotate-90 md:rotate-0" size={32} />
 
               <div className="flex flex-col items-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-neon-purple-600 to-purple-600 rounded-full flex items-center justify-center mb-4 shadow-lg">
-                  <Mail className="text-white" size={32} />
+                <div className="w-24 h-24 bg-gradient-to-br from-cyan-600 to-teal-600 rounded-full flex items-center justify-center mb-4 shadow-xl">
+                  <Mail className="text-white" size={40} strokeWidth={2.5} />
                 </div>
-                <p className="font-semibold text-gray-900">Email</p>
+                <p className="font-semibold text-gray-900 text-lg">Email</p>
               </div>
 
               <ArrowRight className="text-gray-400 rotate-90 md:rotate-0" size={32} />
 
               <div className="flex flex-col items-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-neon-purple-600 to-purple-600 rounded-full flex items-center justify-center mb-4 shadow-lg">
-                  <BarChart3 className="text-white" size={32} />
+                <div className="w-24 h-24 bg-gradient-to-br from-cyan-600 to-teal-600 rounded-full flex items-center justify-center mb-4 shadow-xl">
+                  <BarChart3 className="text-white" size={40} strokeWidth={2.5} />
                 </div>
-                <p className="font-semibold text-gray-900">Reporting</p>
+                <p className="font-semibold text-gray-900 text-lg">Reporting</p>
               </div>
             </div>
 
