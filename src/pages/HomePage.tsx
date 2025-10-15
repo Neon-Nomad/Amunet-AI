@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { Bot, Clock, DollarSign, TrendingUp, Zap, Shield, ArrowRight } from 'lucide-react';
 import ParticleBackground from '../components/ParticleBackground';
 import TypewriterTerminal from '../components/TypewriterTerminal';
