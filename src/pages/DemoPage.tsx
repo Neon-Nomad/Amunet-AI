@@ -180,12 +180,6 @@ export default function DemoPage() {
                 ))}
               </div>
             </div>
-
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden lg:block pointer-events-none">
-              <div className="w-32 h-32 bg-gradient-to-br from-cyan-600 to-teal-600 rounded-full flex items-center justify-center shadow-2xl">
-                <Zap className="text-white" size={48} />
-              </div>
-            </div>
           </div>
 
           <div className="mt-16 grid md:grid-cols-3 gap-8">
