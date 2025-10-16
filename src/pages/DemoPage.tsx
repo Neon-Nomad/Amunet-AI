@@ -109,21 +109,21 @@ export default function DemoPage() {
             </p>
           </div>
 
-          <div className="relative max-w-2xl mx-auto">
+          <div className="relative max-w-6xl mx-auto">
             {/* Desktop view - show all features */}
-            <div className="hidden md:flex flex-row items-center justify-center space-x-8">
+            <div className="hidden md:flex flex-row items-center justify-center space-x-6">
               {features.map((feature, index) => {
                 const Icon = feature.icon;
                 return (
-                  <div key={index}>
+                  <div key={index} className="flex items-center">
                     <div className="flex flex-col items-center">
-                      <div className="w-24 h-24 bg-gradient-to-br from-cyan-600 to-teal-600 rounded-full flex items-center justify-center mb-4 shadow-xl">
-                        <Icon className="text-white" size={40} strokeWidth={2.5} />
+                      <div className="w-28 h-28 bg-gradient-to-br from-cyan-600 to-teal-600 rounded-full flex items-center justify-center mb-4 shadow-xl">
+                        <Icon className="text-white" size={48} strokeWidth={2.5} />
                       </div>
                       <p className="font-semibold text-gray-900 text-lg">{feature.label}</p>
                     </div>
                     {index < features.length - 1 && (
-                      <ArrowRight className="text-gray-400 absolute" style={{ left: `${(index + 1) * 20}%`, top: '50%' }} size={32} />
+                      <ArrowRight className="text-gray-400 mx-4" size={32} />
                     )}
                   </div>
                 );
@@ -147,7 +147,7 @@ export default function DemoPage() {
                     return (
                       <>
                         <div className="w-32 h-32 bg-gradient-to-br from-cyan-600 to-teal-600 rounded-full flex items-center justify-center mb-4 shadow-xl transition-all duration-300">
-                          <Icon className="text-white" size={56} strokeWidth={2.5} />
+                          <Icon className="text-white" size={48} strokeWidth={2.5} />
                         </div>
                         <p className="font-bold text-gray-900 text-2xl">{features[currentFeatureIndex].label}</p>
                       </>
