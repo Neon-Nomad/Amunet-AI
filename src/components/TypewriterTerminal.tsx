@@ -2,16 +2,23 @@ import { useState, useEffect } from 'react';
 
 export default function TypewriterTerminal() {
   const [text, setText] = useState('');
-  const fullText = '// Initializing Amunet AI Systems...';
+  const [isComplete, setIsComplete] = useState(false);
+  const initText = '// Initializing Amunet AI Systems...';
+  const completeText = '// All Systems Go.';
 
   useEffect(() => {
     let index = 0;
     const timer = setInterval(() => {
-      if (index <= fullText.length) {
-        setText(fullText.slice(0, index));
+      if (index <= initText.length) {
+        setText(initText.slice(0, index));
         index++;
       } else {
         clearInterval(timer);
+        // Wait 500ms then show "All Systems Go"
+        setTimeout(() => {
+          setIsComplete(true);
+          setText(completeText);
+        }, 500);
       }
     }, 50);
 
@@ -27,7 +34,7 @@ export default function TypewriterTerminal() {
       </div>
       <div className="h-6 flex items-center">
         {text}
-        <span className="inline-block w-2 h-5 bg-cyan-400 ml-1 animate-pulse"></span>
+        {!isComplete && <span className="inline-block w-2 h-5 bg-cyan-400 ml-1 animate-pulse"></span>}
       </div>
     </div>
   );
