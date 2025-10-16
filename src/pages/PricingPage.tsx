@@ -161,7 +161,7 @@ export default function PricingPage() {
             })}
           </div>
 
-          <div className="bg-gradient-to-br from-neon-purple-600 to-purple-600 rounded-2xl shadow-2xl p-8 md:p-12 text-center text-white mb-16">
+          <div className="bg-gradient-to-br from-cyan-600 to-teal-600 rounded-2xl shadow-2xl p-8 md:p-12 text-center text-white mb-16">
             <p className="text-2xl md:text-3xl font-bold mb-6">
               "Most users make back their first month's cost before their trial ends."
             </p>
@@ -170,46 +170,46 @@ export default function PricingPage() {
                 setSelectedPlan({ name: 'Starter', price: '$299/mo' });
                 setModalOpen(true);
               }}
-              className="bg-white text-neon-purple-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg"
+              className="bg-white text-cyan-700 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] transition-all transform hover:scale-105 shadow-lg"
             >
               Start My Free Trial
             </button>
-            <p className="text-purple-200 text-sm mt-4">
+            <p className="text-cyan-100 text-base mt-4 font-medium">
               No card, no commitment — just results.
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+          <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-xl p-8 md:p-12 border border-gray-200">
             <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
               All Plans Include
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-neon-purple-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-gradient-to-br from-cyan-600 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Check className="text-white" size={32} />
                 </div>
-                <h3 className="font-semibold text-gray-900 mb-2">No Setup Fees</h3>
-                <p className="text-gray-600 text-sm">
+                <h3 className="font-bold text-gray-900 mb-2 text-lg">No Setup Fees</h3>
+                <p className="text-gray-700 text-base">
                   Start using Amunet AI in minutes, no installation required
                 </p>
               </div>
 
               <div className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-neon-purple-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-gradient-to-br from-cyan-600 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Check className="text-white" size={32} />
                 </div>
-                <h3 className="font-semibold text-gray-900 mb-2">Cancel Anytime</h3>
-                <p className="text-gray-600 text-sm">
+                <h3 className="font-bold text-gray-900 mb-2 text-lg">Cancel Anytime</h3>
+                <p className="text-gray-700 text-base">
                   No long-term contracts or cancellation fees
                 </p>
               </div>
 
               <div className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-neon-purple-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-gradient-to-br from-cyan-600 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Check className="text-white" size={32} />
                 </div>
-                <h3 className="font-semibold text-gray-900 mb-2">Free Updates</h3>
-                <p className="text-gray-600 text-sm">
+                <h3 className="font-bold text-gray-900 mb-2 text-lg">Free Updates</h3>
+                <p className="text-gray-700 text-base">
                   Get new features and improvements automatically
                 </p>
               </div>

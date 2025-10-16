@@ -9,7 +9,7 @@ export default function DOSBootLoader() {
     "C:\\> Initializing Amunet AI Systems...",
     "C:\\> Connecting Neural Nodes...",
     "C:\\> Loading Automation Protocols...",
-    "C:\\> Launch Successful.",
+    "C:\\> All Systems Go.",
     "",
     "C:\\> Knock Knock."
   ];

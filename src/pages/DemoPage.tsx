@@ -1,4 +1,4 @@
-import { ArrowRight, Phone, Calendar, Mail, BarChart3, Database, Zap } from 'lucide-react';
+import { ArrowRight, Phone, Calendar, Mail, BarChart3, Database, Zap, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
 import InteractiveChatDemo from '../components/InteractiveChatDemo';
 import DemoRequestModal from '../components/DemoRequestModal';
@@ -9,6 +9,15 @@ export default function DemoPage() {
   const [demoModalOpen, setDemoModalOpen] = useState(false);
   const [signupModalOpen, setSignupModalOpen] = useState(false);
   const [selectedIndustry, setSelectedIndustry] = useState('');
+  const [currentFeatureIndex, setCurrentFeatureIndex] = useState(0);
+
+  const features = [
+    { icon: Phone, label: 'Calls' },
+    { icon: Database, label: 'CRM' },
+    { icon: Calendar, label: 'Calendar' },
+    { icon: Mail, label: 'Email' },
+    { icon: BarChart3, label: 'Reporting' }
+  ];
 
   const handleRequestDemo = (industry: string) => {
     setSelectedIndustry(industry);
@@ -18,6 +27,14 @@ export default function DemoPage() {
   const scrollToDemo = () => {
     const demoSection = document.getElementById('demo-section');
     demoSection?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const nextFeature = () => {
+    setCurrentFeatureIndex((prev) => (prev + 1) % features.length);
+  };
+
+  const prevFeature = () => {
+    setCurrentFeatureIndex((prev) => (prev - 1 + features.length) % features.length);
   };
 
   return (
@@ -38,13 +55,13 @@ export default function DemoPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 onClick={scrollToDemo}
-                className="bg-gradient-to-r from-neon-purple-600 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all"
+                className="bg-gradient-to-r from-cyan-600 to-teal-600 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-[0_0_30px_rgba(6,182,212,0.6)] transform hover:scale-105 transition-all"
               >
                 Try the Demo
               </button>
               <button
                 onClick={() => setSignupModalOpen(true)}
-                className="border-2 border-neon-purple-600 text-neon-purple-600 px-8 py-4 rounded-lg font-semibold hover:bg-purple-50 transition-all"
+                className="border-2 border-cyan-600 text-cyan-600 px-8 py-4 rounded-lg font-semibold hover:bg-cyan-50 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all"
               >
                 Start Your Free Trial
               </button>
@@ -52,7 +69,7 @@ export default function DemoPage() {
           </div>
 
           <div className="relative mb-12">
-            <div className="bg-gradient-to-r from-neon-purple-600 to-purple-600 rounded-2xl p-1">
+            <div className="bg-gradient-to-r from-cyan-600 to-teal-600 rounded-2xl p-1">
               <div className="bg-gray-900 rounded-xl p-8">
                 <div className="flex items-center space-x-2 mb-6">
                   <div className="w-3 h-3 rounded-full bg-red-500"></div>
@@ -92,54 +109,80 @@ export default function DemoPage() {
             </p>
           </div>
 
-          <div className="relative">
-            <div className="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-8">
-              <div className="flex flex-col items-center">
-                <div className="w-24 h-24 bg-gradient-to-br from-cyan-600 to-teal-600 rounded-full flex items-center justify-center mb-4 shadow-xl">
-                  <Phone className="text-white" size={40} strokeWidth={2.5} />
+          <div className="relative max-w-2xl mx-auto">
+            {/* Desktop view - show all features */}
+            <div className="hidden md:flex flex-row items-center justify-center space-x-8">
+              {features.map((feature, index) => {
+                const Icon = feature.icon;
+                return (
+                  <div key={index}>
+                    <div className="flex flex-col items-center">
+                      <div className="w-24 h-24 bg-gradient-to-br from-cyan-600 to-teal-600 rounded-full flex items-center justify-center mb-4 shadow-xl">
+                        <Icon className="text-white" size={40} strokeWidth={2.5} />
+                      </div>
+                      <p className="font-semibold text-gray-900 text-lg">{feature.label}</p>
+                    </div>
+                    {index < features.length - 1 && (
+                      <ArrowRight className="text-gray-400 absolute" style={{ left: `${(index + 1) * 20}%`, top: '50%' }} size={32} />
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Mobile/Tablet carousel view */}
+            <div className="md:hidden relative">
+              <div className="flex items-center justify-center space-x-4">
+                <button
+                  onClick={prevFeature}
+                  className="w-12 h-12 bg-cyan-600 rounded-full flex items-center justify-center shadow-lg hover:bg-cyan-700 transition-colors"
+                  aria-label="Previous feature"
+                >
+                  <ChevronLeft className="text-white" size={24} />
+                </button>
+
+                <div className="flex flex-col items-center min-w-[200px]">
+                  {(() => {
+                    const Icon = features[currentFeatureIndex].icon;
+                    return (
+                      <>
+                        <div className="w-32 h-32 bg-gradient-to-br from-cyan-600 to-teal-600 rounded-full flex items-center justify-center mb-4 shadow-xl transition-all duration-300">
+                          <Icon className="text-white" size={56} strokeWidth={2.5} />
+                        </div>
+                        <p className="font-bold text-gray-900 text-2xl">{features[currentFeatureIndex].label}</p>
+                      </>
+                    );
+                  })()}
                 </div>
-                <p className="font-semibold text-gray-900 text-lg">Calls</p>
+
+                <button
+                  onClick={nextFeature}
+                  className="w-12 h-12 bg-cyan-600 rounded-full flex items-center justify-center shadow-lg hover:bg-cyan-700 transition-colors"
+                  aria-label="Next feature"
+                >
+                  <ChevronRight className="text-white" size={24} />
+                </button>
               </div>
 
-              <ArrowRight className="text-gray-400 rotate-90 md:rotate-0" size={32} />
-
-              <div className="flex flex-col items-center">
-                <div className="w-24 h-24 bg-gradient-to-br from-cyan-600 to-teal-600 rounded-full flex items-center justify-center mb-4 shadow-xl">
-                  <Database className="text-white" size={40} strokeWidth={2.5} />
-                </div>
-                <p className="font-semibold text-gray-900 text-lg">CRM</p>
-              </div>
-
-              <ArrowRight className="text-gray-400 rotate-90 md:rotate-0" size={32} />
-
-              <div className="flex flex-col items-center">
-                <div className="w-24 h-24 bg-gradient-to-br from-cyan-600 to-teal-600 rounded-full flex items-center justify-center mb-4 shadow-xl">
-                  <Calendar className="text-white" size={40} strokeWidth={2.5} />
-                </div>
-                <p className="font-semibold text-gray-900 text-lg">Calendar</p>
-              </div>
-
-              <ArrowRight className="text-gray-400 rotate-90 md:rotate-0" size={32} />
-
-              <div className="flex flex-col items-center">
-                <div className="w-24 h-24 bg-gradient-to-br from-cyan-600 to-teal-600 rounded-full flex items-center justify-center mb-4 shadow-xl">
-                  <Mail className="text-white" size={40} strokeWidth={2.5} />
-                </div>
-                <p className="font-semibold text-gray-900 text-lg">Email</p>
-              </div>
-
-              <ArrowRight className="text-gray-400 rotate-90 md:rotate-0" size={32} />
-
-              <div className="flex flex-col items-center">
-                <div className="w-24 h-24 bg-gradient-to-br from-cyan-600 to-teal-600 rounded-full flex items-center justify-center mb-4 shadow-xl">
-                  <BarChart3 className="text-white" size={40} strokeWidth={2.5} />
-                </div>
-                <p className="font-semibold text-gray-900 text-lg">Reporting</p>
+              {/* Dots indicator */}
+              <div className="flex justify-center mt-6 space-x-2">
+                {features.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentFeatureIndex(index)}
+                    className={`w-3 h-3 rounded-full transition-all ${
+                      index === currentFeatureIndex
+                        ? 'bg-cyan-600 w-8'
+                        : 'bg-gray-300 hover:bg-gray-400'
+                    }`}
+                    aria-label={`Go to feature ${index + 1}`}
+                  />
+                ))}
               </div>
             </div>
 
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden md:block">
-              <div className="w-32 h-32 bg-gradient-to-br from-neon-purple-600 to-purple-600 rounded-full flex items-center justify-center shadow-2xl animate-pulse">
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden lg:block pointer-events-none">
+              <div className="w-32 h-32 bg-gradient-to-br from-cyan-600 to-teal-600 rounded-full flex items-center justify-center shadow-2xl">
                 <Zap className="text-white" size={48} />
               </div>
             </div>
@@ -170,17 +213,17 @@ export default function DemoPage() {
 
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-br from-purple-50 to-purple-50 rounded-2xl p-8 md:p-12">
+          <div className="bg-gradient-to-br from-cyan-50 to-teal-50 rounded-2xl p-8 md:p-12 border border-cyan-200">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                 Calculate Your ROI
               </h2>
-              <p className="text-lg text-gray-600 mb-8">
+              <p className="text-lg text-gray-700 mb-8 font-medium">
                 Use our ROI Calculator to see how fast Amunet AI pays for itself. Most businesses see positive ROI within the first month.
               </p>
               <a
                 href="/roi-calculator"
-                className="inline-block bg-gradient-to-r from-neon-purple-600 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all"
+                className="inline-block bg-gradient-to-r from-cyan-600 to-teal-600 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-[0_0_30px_rgba(6,182,212,0.6)] transform hover:scale-105 transition-all"
               >
                 Calculate Your Savings
               </a>
@@ -189,25 +232,25 @@ export default function DemoPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-r from-neon-purple-600 to-purple-600">
+      <section className="py-20 bg-gradient-to-r from-cyan-600 to-teal-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Your Business. On Autopilot.
           </h2>
-          <p className="text-xl text-purple-200 mb-12 max-w-2xl mx-auto">
+          <p className="text-xl text-cyan-100 mb-12 max-w-2xl mx-auto font-medium">
             Stop losing customers to voicemail. Start capturing every opportunity with Amunet AI.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={() => setSignupModalOpen(true)}
-              className="bg-white text-neon-purple-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg"
+              className="bg-white text-cyan-700 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 hover:shadow-[0_0_30px_rgba(255,255,255,0.5)] transition-all transform hover:scale-105 shadow-lg"
             >
               Start My Free Trial
             </button>
             <button
               onClick={() => handleRequestDemo('General')}
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/10 transition-all"
+              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/10 hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all"
             >
               Talk to a Human (Ironically)
             </button>

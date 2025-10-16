@@ -98,7 +98,7 @@ export default function InteractiveChatDemo({ onRequestDemo }: InteractiveChatDe
               <button
                 key={scenario.id}
                 onClick={() => playScenario(scenario)}
-                className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all transform hover:scale-105 border-2 border-transparent hover:border-neon-purple-600"
+                className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all transform hover:scale-105 border-2 border-transparent hover:border-cyan-600"
               >
                 <div className="text-5xl mb-4">{scenario.emoji}</div>
                 <h4 className="text-lg font-semibold text-gray-900">{scenario.title}</h4>
@@ -109,7 +109,7 @@ export default function InteractiveChatDemo({ onRequestDemo }: InteractiveChatDe
       ) : (
         <div>
           <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
-            <div className="bg-gradient-to-r from-neon-purple-600 to-purple-600 text-white px-6 py-4 flex items-center justify-between">
+            <div className="bg-gradient-to-r from-cyan-600 to-teal-600 text-white px-6 py-4 flex items-center justify-between">
               <div className="flex items-center space-x-3">
                 <MessageCircle size={24} />
                 <span className="font-semibold">Chat with Amunet AI</span>
@@ -131,14 +131,14 @@ export default function InteractiveChatDemo({ onRequestDemo }: InteractiveChatDe
                   }`}
                 >
                   {message.sender === 'amunet' && (
-                    <div className="w-8 h-8 bg-gradient-to-br from-neon-purple-600 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                    <div className="w-8 h-8 bg-gradient-to-br from-cyan-600 to-teal-600 rounded-full flex items-center justify-center flex-shrink-0">
                       <Bot className="text-white" size={18} />
                     </div>
                   )}
                   <div
                     className={`max-w-xs px-4 py-3 rounded-2xl ${
                       message.sender === 'user'
-                        ? 'bg-neon-purple-600 text-white'
+                        ? 'bg-cyan-600 text-white'
                         : 'bg-white text-gray-900 shadow-md'
                     }`}
                   >
