@@ -1,4 +1,4 @@
-import { ArrowRight, Phone, Calendar, Mail, BarChart3, Database, Zap, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, Phone, Calendar, Mail, BarChart3, Database, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
 import InteractiveChatDemo from '../components/InteractiveChatDemo';
 import DemoRequestModal from '../components/DemoRequestModal';

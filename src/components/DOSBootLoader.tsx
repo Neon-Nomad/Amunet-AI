@@ -1,18 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 export default function DOSBootLoader() {
   const [displayedText, setDisplayedText] = useState('');
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
 
-  const lines = [
-    "C:\\> Initializing Amunet AI Systems...",
-    "C:\\> Connecting Neural Nodes...",
-    "C:\\> Loading Automation Protocols...",
-    "C:\\> All Systems Go.",
-    "",
-    "C:\\> Knock Knock."
-  ];
+  const lines = useMemo(
+    () => [
+      "C:\\> Initializing Amunet AI Systems...",
+      "C:\\> Connecting Neural Nodes...",
+      "C:\\> Loading Automation Protocols...",
+      "C:\\> All Systems Go.",
+      "",
+      "C:\\> Knock Knock."
+    ],
+    []
+  );
 
   useEffect(() => {
     if (currentLineIndex >= lines.length) {
@@ -35,7 +38,7 @@ export default function DOSBootLoader() {
       }, 400);
       return () => clearTimeout(timeout);
     }
-  }, [currentCharIndex, currentLineIndex]);
+  }, [currentCharIndex, currentLineIndex, lines]);
 
   return (
     <div className="relative w-full max-w-2xl mx-auto">

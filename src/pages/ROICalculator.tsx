@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { DollarSign, TrendingUp, Sparkles } from 'lucide-react';
 
 export default function ROICalculator() {
@@ -23,7 +23,7 @@ export default function ROICalculator() {
       const timer = setTimeout(() => setShowSavingsTicker(false), 2000);
       return () => clearTimeout(timer);
     }
-  }, [netSavings]);
+  }, [netSavings, previousSavings, savingsDifference]);
 
   useEffect(() => {
     setPreviousSavings(netSavings);

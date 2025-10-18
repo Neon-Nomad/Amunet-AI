@@ -1,6 +1,6 @@
 import { X } from 'lucide-react';
 import { useState } from 'react';
-import { supabase } from '../lib/supabase';
+import { createSignup } from '../lib/api';
 
 interface SignupModalProps {
   isOpen: boolean;
@@ -26,20 +26,14 @@ export default function SignupModal({ isOpen, onClose, planName, planPrice }: Si
     setError('');
 
     try {
-      const { error: insertError } = await supabase
-        .from('trial_signups')
-        .insert([
-          {
-            email,
-            name,
-            business_name: businessName,
-            phone,
-            plan_name: planName,
-            plan_price: planPrice,
-          }
-        ]);
-
-      if (insertError) throw insertError;
+      await createSignup({
+        email,
+        name,
+        business_name: businessName,
+        phone,
+        plan_name: planName,
+        plan_price: planPrice,
+      });
 
       setSuccess(true);
       setEmail('');
@@ -51,8 +45,13 @@ export default function SignupModal({ isOpen, onClose, planName, planPrice }: Si
         setSuccess(false);
         onClose();
       }, 3000);
-    } catch (err) {
-      setError('Something went wrong. Please try again.');
+    } catch (err: unknown) {
+      const e = err as { status?: number };
+      if (typeof e?.status === 'number' && e.status === 409) {
+        setError('This email is already registered.');
+      } else {
+        setError('Something went wrong. Please try again.');
+      }
       console.error(err);
     } finally {
       setLoading(false);

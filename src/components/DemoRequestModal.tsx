@@ -1,6 +1,6 @@
 import { X } from 'lucide-react';
 import { useState } from 'react';
-import { supabase } from '../lib/supabase';
+import { createDemoRequest } from '../lib/api';
 
 interface DemoRequestModalProps {
   isOpen: boolean;
@@ -36,18 +36,12 @@ export default function DemoRequestModal({ isOpen, onClose, industry = '' }: Dem
     setError('');
 
     try {
-      const { error: insertError } = await supabase
-        .from('demo_requests')
-        .insert([
-          {
-            email,
-            name,
-            industry: selectedIndustry,
-            phone,
-          }
-        ]);
-
-      if (insertError) throw insertError;
+      await createDemoRequest({
+        email,
+        name,
+        industry: selectedIndustry,
+        phone,
+      });
 
       setSuccess(true);
       setEmail('');
@@ -59,8 +53,13 @@ export default function DemoRequestModal({ isOpen, onClose, industry = '' }: Dem
         setSuccess(false);
         onClose();
       }, 3000);
-    } catch (err) {
-      setError('Something went wrong. Please try again.');
+    } catch (err: unknown) {
+      const e = err as { status?: number };
+      if (typeof e?.status === 'number' && e.status === 409) {
+        setError('This email already submitted a request.');
+      } else {
+        setError('Something went wrong. Please try again.');
+      }
       console.error(err);
     } finally {
       setLoading(false);

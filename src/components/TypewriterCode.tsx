@@ -1,18 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 export default function TypewriterCode() {
   const [displayedLines, setDisplayedLines] = useState<string[]>([]);
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
 
-  const codeLines = [
-    { num: '1', code: 'function handleCustomerInquiry() {' },
-    { num: '2', code: '  earnest.listen();' },
-    { num: '3', code: '  earnest.respond();' },
-    { num: '4', code: '  earnest.bookAppointment();' },
-    { num: '5', code: '  // All while you sleep' },
-    { num: '6', code: '}' },
-  ];
+  const codeLines = useMemo(
+    () => [
+      { num: '1', code: 'function handleCustomerInquiry() {' },
+      { num: '2', code: '  earnest.listen();' },
+      { num: '3', code: '  earnest.respond();' },
+      { num: '4', code: '  earnest.bookAppointment();' },
+      { num: '5', code: '  // All while you sleep' },
+      { num: '6', code: '}' },
+    ],
+    []
+  );
 
   useEffect(() => {
     if (currentLineIndex >= codeLines.length) {
@@ -46,7 +49,7 @@ export default function TypewriterCode() {
       }, 400);
       return () => clearTimeout(timeout);
     }
-  }, [currentCharIndex, currentLineIndex]);
+  }, [currentCharIndex, currentLineIndex, codeLines]);
 
   const renderLine = (line: string, index: number) => {
     const lineNum = codeLines[index]?.num || '';
