@@ -1,0 +1,171 @@
+import { X } from 'lucide-react';
+import { useState } from 'react';
+import { supabase } from '../lib/supabase';
+
+interface SignupModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  planName: string;
+  planPrice: string;
+}
+
+export default function SignupModal({ isOpen, onClose, planName, planPrice }: SignupModalProps) {
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [businessName, setBusinessName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
+
+  if (!isOpen) return null;
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+
+    try {
+      const { error: insertError } = await supabase
+        .from('trial_signups')
+        .insert([
+          {
+            email,
+            name,
+            business_name: businessName,
+            phone,
+            plan_name: planName,
+            plan_price: planPrice,
+          }
+        ]);
+
+      if (insertError) throw insertError;
+
+      setSuccess(true);
+      setEmail('');
+      setName('');
+      setBusinessName('');
+      setPhone('');
+
+      setTimeout(() => {
+        setSuccess(false);
+        onClose();
+      }, 3000);
+    } catch (err) {
+      setError('Something went wrong. Please try again.');
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+      <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative">
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+        >
+          <X size={24} />
+        </button>
+
+        {success ? (
+          <div className="text-center py-8">
+            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">You're All Set!</h3>
+            <p className="text-gray-600">
+              Check your email for next steps to start your free trial.
+            </p>
+          </div>
+        ) : (
+          <>
+            <h2 className="text-3xl font-bold text-gray-900 mb-2">Start Your Free Trial</h2>
+            <p className="text-gray-600 mb-6">
+              {planName} Plan - {planPrice}
+            </p>
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Full Name
+                </label>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-neon-purple-600 focus:border-transparent"
+                  placeholder="John Smith"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-neon-purple-600 focus:border-transparent"
+                  placeholder="john@business.com"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Business Name
+                </label>
+                <input
+                  type="text"
+                  value={businessName}
+                  onChange={(e) => setBusinessName(e.target.value)}
+                  required
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-neon-purple-600 focus:border-transparent"
+                  placeholder="Your Business LLC"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Phone Number
+                </label>
+                <input
+                  type="tel"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  required
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-neon-purple-600 focus:border-transparent"
+                  placeholder="(555) 123-4567"
+                />
+              </div>
+
+              {error && (
+                <div className="bg-red-50 text-red-600 p-3 rounded-lg text-sm">
+                  {error}
+                </div>
+              )}
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full bg-gradient-to-r from-neon-purple-600 to-purple-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {loading ? 'Starting Your Trial...' : 'Start Free Trial'}
+              </button>
+
+              <p className="text-xs text-gray-500 text-center">
+                No credit card required. Cancel anytime.
+              </p>
+            </form>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
