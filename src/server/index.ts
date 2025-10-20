@@ -1,7 +1,7 @@
 // src/server/index.ts
 import express from 'express';
 import dotenv from 'dotenv';
-import routes from './api/routes';
+import routes from './api/routes.js';
 
 dotenv.config();
 
@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // CORS
-app.use((req, res, next) => {
+app.use((_req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
